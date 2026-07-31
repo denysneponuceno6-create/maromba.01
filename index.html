@@ -1,526 +1,716 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarick Victor | A Evolução Selvagem</title>
-    <meta name="description" content="Treinamento de força com a mentalidade do predador. Planos, método e resultados de Tarick Victor.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarick Victor — Nutrição Estratégica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D0D0D;
+    --bg-raise:#111111;
+    --card:#1A1A1A;
+    --card-hi:#1E1B12;
+    --line:#262626;
+    --line-soft:#1E1E1E;
+    --gold:#C9A227;
+    --gold-soft:rgba(201,162,39,0.14);
+    --gold-dim:#8f7419;
+    --text:#FFFFFF;
+    --muted:#A1A1AA;
+    --muted-dim:#6b6b72;
+    --danger:#8a3b2e;
+    --radius:2px;
+    --radius-lg:4px;
+    --maxw:1180px;
+    --serif:'Oswald', sans-serif;
+    --sans:'Inter', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  input{font-family:inherit;}
+  ::selection{background:var(--gold);color:#0D0D0D;}
+  :focus-visible{outline:1.5px solid var(--gold);outline-offset:3px;}
 
-    <!-- Cabeçalhos de segurança abaixo servem como reforço para navegadores antigos. -->
-    <!-- A defesa real (CSP, HSTS, X-Frame-Options) é aplicada via HTTP headers no arquivo netlify.toml, não aqui. -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
 
-<link rel="icon" type="image/png" href="onca-mascote.png">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'jungle-black': '#050505',
-                        'jungle-dark': '#111111',
-                        'onca-green': '#00ff88',
-                        'onca-green-dim': '#00cc6a',
-                        'onca-orange': '#e8890c',
-                        'bone-white': '#f0f0f0',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                        'display': ['Impact', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--gold);
+    text-transform:uppercase;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:inline-block;}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:.01em;margin:0;text-transform:uppercase;}
+  .muted{color:var(--muted);}
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:60;background:rgba(13,13,13,0.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:var(--maxw);margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{width:34px;height:34px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--gold);font-size:14px;}
+  .brand-name{font-family:var(--serif);letter-spacing:.08em;font-size:15px;text-transform:uppercase;}
+  .brand-name span{color:var(--gold);}
+  nav.links{display:flex;gap:34px;}
+  nav.links a{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:3px;}
+  nav.links a:hover{color:var(--text);}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .25s;}
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{display:none;}
+  @media(min-width:860px){.nav-cta{display:block;}}
+  .btn-mini{border:1px solid var(--gold);color:var(--gold);font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:9px 16px;text-transform:uppercase;transition:background .2s,color .2s;}
+  .btn-mini:hover{background:var(--gold);color:#0D0D0D;}
+  .hamburger{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:6px;}
+  .hamburger span{width:20px;height:1px;background:var(--text);}
+  @media(min-width:860px){.hamburger{display:none;}}
+  @media(max-width:859px){nav.links{display:none;}}
 
-        body {
-            background-color: #050505;
-            color: #f0f0f0;
-        }
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:96px 0 64px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse 620px 320px at 82% -10%, rgba(201,162,39,0.10), transparent 60%),
+      var(--bg);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .hero-grid{display:grid;gap:40px;align-items:end;}
+  .hero-tag{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+  .hero-tag .sep{color:var(--muted-dim);}
+  h1.headline{
+    font-size:clamp(34px,6vw,64px);line-height:1.04;max-width:900px;
+    font-weight:700;
+  }
+  h1.headline em{font-style:normal;color:var(--gold);}
+  .hero-sub{margin-top:22px;max-width:560px;color:var(--muted);font-size:16px;}
+  .hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .btn-gold{
+    background:var(--gold);color:#0D0D0D;font-family:var(--mono);font-weight:600;
+    font-size:12.5px;letter-spacing:.14em;padding:15px 26px;text-transform:uppercase;
+    border:1px solid var(--gold);transition:background .2s,transform .15s;
+  }
+  .btn-gold:hover{background:#e0b52c;}
+  .btn-gold:active{transform:translateY(1px);}
+  .btn-outline{
+    border:1px solid var(--line);color:var(--text);font-family:var(--mono);
+    font-size:12.5px;letter-spacing:.14em;padding:15px 26px;text-transform:uppercase;
+    transition:border-color .2s;
+  }
+  .btn-outline:hover{border-color:var(--gold);}
+  .btn-block{display:block;width:100%;text-align:center;}
 
-        .glow-text {
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-        }
+  .service-record{
+    margin-top:54px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    border-top:1px solid var(--line-soft);padding-top:22px;
+  }
+  .service-record div{padding-right:20px;}
+  .service-record .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--muted-dim);text-transform:uppercase;}
+  .service-record .val{font-family:var(--serif);font-size:19px;margin-top:6px;text-transform:uppercase;}
 
-        .glow-btn:hover {
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
-        }
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  section.alt{background:var(--bg-raise);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+  .section-head{margin-bottom:52px;max-width:640px;}
+  .section-head h2{font-size:clamp(26px,4vw,38px);margin-top:14px;}
+  .section-head p{color:var(--muted);margin-top:14px;font-size:15.5px;}
 
-        .bg-jungle {
-            background: linear-gradient(180deg, #050505 0%, #0a1a0f 100%);
-        }
+  /* ---------- Rank stripes (signature element) ---------- */
+  .rank{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .rank-stripes{display:flex;gap:3px;}
+  .rank-stripes span{width:16px;height:3px;background:var(--gold-dim);}
+  .rank-num{font-family:var(--serif);color:var(--gold);font-size:13px;letter-spacing:.1em;}
 
-        /* Textura de "pintas de onça" usada como marca visual assinatura da página */
-        .spot-texture {
-            background-image: radial-gradient(rgba(232,137,12,0.35) 3px, transparent 3px),
-                               radial-gradient(rgba(232,137,12,0.2) 2px, transparent 2px);
-            background-size: 40px 40px, 25px 25px;
-            background-position: 0 0, 15px 15px;
-        }
+  /* ---------- Tier cards ---------- */
+  .tiers{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:stretch;}
+  .tier{
+    background:var(--card);border:1px solid var(--line);padding:34px 30px 30px;
+    display:flex;flex-direction:column;position:relative;
+  }
+  .tier.hi{border-color:var(--gold-dim);background:linear-gradient(180deg,var(--card-hi),var(--card) 40%);}
+  .tier.hi::before{
+    content:"MAIS PROCURADO";position:absolute;top:0;right:0;
+    background:var(--gold);color:#0D0D0D;font-family:var(--mono);font-size:10px;
+    letter-spacing:.12em;padding:6px 12px;font-weight:600;
+  }
+  .tier-icon{width:44px;height:44px;color:var(--gold);margin-bottom:22px;}
+  .tier h3{font-size:20px;letter-spacing:.03em;}
+  .tier .tagline{font-family:var(--mono);color:var(--muted);font-size:12px;letter-spacing:.06em;margin-top:8px;text-transform:none;}
+  .tier-price{margin:26px 0 24px;padding-top:22px;border-top:1px solid var(--line-soft);}
+  .tier-price .amount{font-family:var(--mono);font-size:30px;color:var(--gold);letter-spacing:.01em;}
+  .tier-price .note{font-family:var(--mono);font-size:12px;color:var(--muted-dim);margin-left:4px;}
+  .tier-price .sob{font-family:var(--serif);font-size:19px;color:var(--gold);letter-spacing:.06em;}
+  .tier-items{flex:1;margin-bottom:30px;}
+  .tier-items li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line-soft);font-size:14.5px;color:#d4d4d8;}
+  .tier-items li:first-child{border-top:none;}
+  .tier-items li svg{width:14px;height:14px;color:var(--gold);flex-shrink:0;margin-top:3px;}
+  .tier-items li.plus{color:var(--muted);font-style:normal;}
+  .tier-items li.plus b{color:var(--text);font-weight:500;}
 
-        .claw-divider {
-            height: 3px;
-            background: repeating-linear-gradient(110deg, #00ff88 0 20px, transparent 20px 34px);
-            opacity: 0.5;
-        }
+  /* ---------- Comparison table ---------- */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);}
+  table.compare{width:100%;border-collapse:collapse;min-width:640px;}
+  table.compare th,table.compare td{padding:16px 20px;text-align:center;border-bottom:1px solid var(--line-soft);font-size:14px;}
+  table.compare th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--bg-raise);}
+  table.compare td:first-child,table.compare th:first-child{text-align:left;font-family:var(--sans);color:var(--text);white-space:nowrap;}
+  table.compare th:first-child{background:var(--card);}
+  table.compare tbody tr:last-child td{border-bottom:none;}
+  table.compare td.yes{color:var(--gold);font-size:15px;}
+  table.compare td.no{color:var(--muted-dim);}
+  table.compare th.hi{color:var(--gold);}
 
-        @media (prefers-reduced-motion: reduce) {
-            * { animation: none !important; transition: none !important; }
-        }
+  /* ---------- About ---------- */
+  .about-grid{display:grid;gap:56px;grid-template-columns:1fr;}
+  @media(min-width:900px){.about-grid{grid-template-columns:340px 1fr;}}
+  .about-photo{
+    aspect-ratio:4/5;background:var(--card);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  }
+  .about-photo svg{width:56%;color:var(--line);}
+  .about-photo .frame-label{
+    position:absolute;bottom:0;left:0;right:0;padding:14px 18px;
+    background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;
+  }
+  .dossier{border:1px solid var(--line);background:var(--card);}
+  .dossier-row{display:grid;grid-template-columns:170px 1fr;padding:16px 22px;border-top:1px solid var(--line-soft);}
+  .dossier-row:first-child{border-top:none;}
+  .dossier-row .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;}
+  .dossier-row .v{font-size:14.5px;color:#d4d4d8;}
+  .about-text p{color:var(--muted);font-size:15.5px;margin:0 0 16px;}
+  .about-text p:last-child{margin-bottom:0;}
 
-        /* Ícones animados */
-        @keyframes prowl-pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.06); }
-        }
+  /* ---------- Referral ---------- */
+  .referral-box{
+    border:1px solid var(--gold-dim);background:linear-gradient(135deg,var(--card-hi),var(--card));
+    padding:48px;display:grid;gap:40px;grid-template-columns:1fr;
+  }
+  @media(min-width:860px){.referral-box{grid-template-columns:1fr 1fr;align-items:center;}}
+  .referral-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .rtier{border:1px solid var(--line);padding:20px 14px;text-align:center;background:var(--bg);}
+  .rtier .rt-label{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+  .rtier .rt-amt{font-family:var(--mono);font-size:24px;color:var(--gold);margin-top:8px;}
 
-        @keyframes soft-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
+  /* ---------- Contact / footer ---------- */
+  .contact-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+  .contact-card{border:1px solid var(--line);background:var(--card);padding:28px;}
+  .contact-card .eyebrow{margin-bottom:14px;}
+  .contact-card p{color:var(--muted);font-size:14.5px;margin:10px 0 20px;}
 
-        .icon-badge {
-            width: 3.5rem;
-            height: 3.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(0,255,136,0.3);
-            background: radial-gradient(circle at 30% 30%, rgba(0,255,136,0.12), transparent 70%);
-            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
-        }
+  footer{border-top:1px solid var(--line-soft);padding:40px 0;}
+  .footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;}
+  .footer-inner .muted{font-size:12.5px;font-family:var(--mono);letter-spacing:.04em;}
 
-        .icon-badge svg {
-            width: 1.75rem;
-            height: 1.75rem;
-            stroke: #00ff88;
-            transition: stroke 0.35s ease;
-        }
+  /* ---------- Payment / Planos pages ---------- */
+  .page-header{padding:44px 0 0;}
+  .back-link{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--muted);display:inline-flex;gap:8px;align-items:center;text-transform:uppercase;}
+  .back-link:hover{color:var(--gold);}
+  .pay-grid{display:grid;gap:40px;grid-template-columns:1fr;padding:40px 0 100px;}
+  @media(min-width:900px){.pay-grid{grid-template-columns:1fr 380px;}}
+  .pay-form{border:1px solid var(--line);background:var(--card);padding:36px;}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:9px;}
+  .field input{
+    width:100%;background:var(--bg);border:1px solid var(--line);color:var(--text);
+    padding:13px 14px;font-size:14.5px;transition:border-color .2s;
+  }
+  .field input:focus{border-color:var(--gold);outline:none;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+  .summary{border:1px solid var(--line);background:var(--card);padding:32px;height:fit-content;position:sticky;top:96px;}
+  .summary h3{font-size:16px;letter-spacing:.04em;margin-bottom:6px;}
+  .summary .plan-note{color:var(--muted);font-size:13px;margin-bottom:24px;}
+  .summary-price{font-family:var(--mono);font-size:34px;color:var(--gold);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:20px 0;margin-bottom:22px;}
+  .summary-price span{font-size:14px;color:var(--muted-dim);}
+  .summary ul li{display:flex;gap:10px;font-size:13.5px;color:var(--muted);padding:7px 0;}
+  .summary ul li svg{width:12px;height:12px;color:var(--gold);flex-shrink:0;margin-top:4px;}
+  .success-panel{border:1px solid var(--gold-dim);background:var(--gold-soft);padding:26px;display:none;}
+  .success-panel.show{display:block;}
+  .success-panel .eyebrow{margin-bottom:10px;}
+  .success-panel p{color:var(--muted);font-size:14px;margin:0;}
 
-        .group:hover .icon-badge {
-            transform: scale(1.12) rotate(-4deg);
-            box-shadow: 0 0 28px rgba(0,255,136,0.5);
-            border-color: #00ff88;
-            background: radial-gradient(circle at 30% 30%, rgba(0,255,136,0.25), transparent 70%);
-        }
+  /* Planos page */
+  .plan-toggle{display:inline-flex;border:1px solid var(--line);margin-bottom:44px;}
+  .plan-toggle button{padding:11px 22px;background:none;border:0;color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;}
+  .plan-toggle button.active{background:var(--gold);color:#0D0D0D;}
+  .plan-cards{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));}
+  .plan-cards[data-hidden="true"]{display:none;}
+  .plan-card{border:1px solid var(--line);background:var(--card);padding:28px;}
+  .plan-card h3{font-size:16px;letter-spacing:.05em;}
+  .plan-card .p-price{font-family:var(--mono);color:var(--gold);font-size:26px;margin:16px 0 4px;}
+  .plan-card .p-note{font-family:var(--mono);font-size:11.5px;color:var(--muted-dim);}
+  .plan-card .save{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--gold);border:1px solid var(--gold-dim);padding:3px 9px;}
+  .plan-card ul{margin:20px 0 24px;}
+  .plan-card ul li{font-size:13.5px;color:var(--muted);padding:6px 0;border-top:1px solid var(--line-soft);}
+  .plan-card ul li:first-child{border-top:none;}
 
-        .icon-idle {
-            animation: prowl-pulse 3.2s ease-in-out infinite;
-        }
+  .fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+  .fade-in.in{opacity:1;transform:none;}
 
-        .icon-idle-float {
-            animation: soft-float 3.6s ease-in-out infinite;
-        }
-
-        .social-badge {
-            width: 3.25rem;
-            height: 3.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9999px;
-            border: 1px solid rgba(0,255,136,0.25);
-            background: #111111;
-            transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.35s ease, border-color 0.35s ease;
-        }
-
-        .social-badge svg {
-            width: 1.5rem;
-            height: 1.5rem;
-            fill: #d1d5db;
-            transition: fill 0.35s ease;
-        }
-
-        .social-badge:hover {
-            transform: scale(1.15) rotate(-6deg);
-            box-shadow: 0 0 25px rgba(0,255,136,0.5);
-            border-color: #00ff88;
-        }
-
-        .social-badge:hover svg {
-            fill: #00ff88;
-        }
-
-        details[open] .faq-chevron {
-            transform: rotate(180deg);
-        }
-
-        .faq-chevron {
-            transition: transform 0.3s ease;
-        }
-    </style>
+  #app{min-height:60vh;}
+</style>
 </head>
-<body class="font-sans antialiased bg-jungle overflow-x-hidden">
+<body>
 
-    <!-- NAV BAR -->
-    <nav class="fixed w-full z-50 bg-jungle-black/90 backdrop-blur-md border-b border-green-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-                    <img src="onca-mascote.png"
-                         class="h-14 w-auto drop-shadow-[0_0_10px_rgba(0,255,136,0.5)]">
-                    <span class="font-display text-2xl text-white uppercase tracking-widest">Tarick<span class="text-onca-green">Victor</span></span>
-                </div>
-
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="hover:text-onca-green transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wider">Início</a>
-                        <a href="#metodo" class="hover:text-onca-green transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wider">Método</a>
-                        <a href="#planos" class="hover:text-onca-green transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wider">Planos</a>
-                        <a href="#depoimentos" class="hover:text-onca-green transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wider">Serviços Disponíveis</a>
-                        <a href="#planos" class="bg-onca-green text-jungle-black px-5 py-2 font-black uppercase tracking-widest hover:bg-white transition-all glow-btn">
-                            Entrar Agora
-                        </a>
-                    </div>
-                </div>
-
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" id="menu-btn" class="bg-jungle-dark inline-flex items-center justify-center p-2 rounded-md text-onca-green hover:bg-green-900/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-onca-green" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Abrir menu</span>
-                        <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-jungle-black border-t border-green-900/30 px-4 py-4 space-y-2">
-            <a href="#home" class="block px-3 py-2 text-sm font-bold uppercase tracking-wider hover:text-onca-green">Início</a>
-            <a href="#metodo" class="block px-3 py-2 text-sm font-bold uppercase tracking-wider hover:text-onca-green">O Método</a>
-            <a href="#planos" class="block px-3 py-2 text-sm font-bold uppercase tracking-wider hover:text-onca-green">Planos</a>
-            <a href="#depoimentos" class="block px-3 py-2 text-sm font-bold uppercase tracking-wider hover:text-onca-green">Resultados</a>
-            <a href="#planos" class="block bg-onca-green text-jungle-black px-5 py-2 text-center font-black uppercase tracking-widest">Entrar Agora</a>
-        </div>
+<header class="site">
+  <div class="nav">
+    <a href="#/" class="brand">
+      <span class="brand-mark">TV</span>
+      <span class="brand-name">Tarick <span>Victor</span></span>
+    </a>
+    <nav class="links">
+      <a href="#/">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#/planos">Planos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
     </nav>
+    <a class="btn-mini nav-cta" href="#servicos">Ver Serviços</a>
+  </div>
+</header>
 
-    <!-- HERO -->
-    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 pointer-events-none">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-onca-green/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-96 h-96 bg-onca-orange/10 rounded-full blur-3xl"></div>
+<div id="app"></div>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="muted">© 2026 TARICK VICTOR — NUTRIÇÃO ESTRATÉGICA</span>
+    <span class="muted">CRN — CONSULTE REGISTRO PROFISSIONAL</span>
+  </div>
+</footer>
+
+<script>
+/* ============ CONFIG ============ */
+const WHATSAPP_NUMBER = "5563999999999"; // TODO: substituir pelo número real do Tarick
+function waLink(msg){ return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`; }
+
+/* ============ ICONS ============ */
+const ICON = {
+  check:`<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10.5l4 4L16 6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  plateApple:`<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="10.5"/><path d="M24 15c1.5-2 3.6-2.6 4.6-2.4M22 15.2c-2.6 0-5 2.1-5 5.6 0 4.6 3.6 8 5.4 8s1.4-.6 2.6-.6 1 .6 2.6.6 5.4-3.6 5.4-8c0-2.6-1.4-4.4-3-5.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  platePhone:`<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="18" cy="24" r="13.5"/><circle cx="18" cy="24" r="7.5"/><rect x="30" y="10" width="13" height="24" rx="1.6"/><line x1="34" y1="30" x2="39" y2="30" stroke-linecap="round"/></svg>`,
+  plateDumbbell:`<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="17" cy="24" r="12.5"/><circle cx="17" cy="24" r="6.5"/><line x1="27" y1="24" x2="43" y2="24" stroke-linecap="round"/><rect x="30" y="19" width="4.5" height="10" rx="1"/><rect x="39.5" y="17" width="4.5" height="14" rx="1"/></svg>`,
+  silhouette:`<svg viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M50 8c-11 0-18 9-18 21s7 21 18 21 18-9 18-21S61 8 50 8z"/><path d="M14 112c0-24 16-38 36-38s36 14 36 38" /></svg>`,
+  arrow:`<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h12M11 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+};
+
+/* ============ DATA ============ */
+const TIERS = [
+  {
+    level:1, roman:"I", icon:ICON.plateApple,
+    name:"Consultoria Nutricional", tagline:"Só nutrição",
+    price:"R$ 250", note:"pagamento único",
+    items:[
+      "1 consulta nutricional completa (60 min)",
+      "Plano alimentar personalizado",
+      "1 retorno de ajustes (30 min)",
+      "Relatório de composição corporal (adipômetro / bioimpedância + medidas)"
+    ],
+    cta:"Comprar agora", href:"#/pagamento-consultoria"
+  },
+  {
+    level:2, roman:"II", icon:ICON.platePhone, hi:true,
+    name:"Nutrição + App", tagline:"Acompanhamento mensal",
+    price:"R$ 300", note:"/ mês",
+    items:[
+      { plus:true, text:"Tudo do nível I" },
+      "Acesso ao app exclusivo",
+      "4 acompanhamentos semanais via questionário",
+      "Ajustes no plano alimentar conforme evolução",
+      "Suporte via WhatsApp para dúvidas rápidas"
+    ],
+    cta:"Assinar agora", href:"#/pagamento-nutri-app"
+  },
+  {
+    level:3, roman:"III", icon:ICON.plateDumbbell,
+    name:"Completão", tagline:"Nutrição + App + Personal",
+    price:null, note:"sob consulta",
+    items:[
+      { plus:true, text:"Tudo do nível II" },
+      "Treinos personalizados com vídeos no app",
+      "1 aula presencial de treino por mês",
+      "Acompanhamento integrado de nutrição e treino"
+    ],
+    cta:"Entrar em contato",
+    href: waLink("Olá Tarick, tenho interesse no pacote COMPLETÃO (Nutrição + App + Personal). Pode me passar mais informações?"),
+    external:true
+  }
+];
+
+const COMPARE_ROWS = [
+  ["Consulta inicial","yes","yes","yes"],
+  ["Plano alimentar","yes","yes","yes"],
+  ["Retornos","1","4 / semana","4 / semana"],
+  ["Acesso ao app","no","yes","yes"],
+  ["Ajustes contínuos","no","yes","yes"],
+  ["Treinos no app","no","no","yes"],
+  ["Aula presencial","no","no","yes"],
+];
+
+const MENSAL = [
+  { key:"mensal-essencial", name:"Essencial", price:"R$ 300", note:"/ mês",
+    features:["4 acompanhamentos semanais","Ajustes de plano conforme evolução","Suporte via WhatsApp"] },
+  { key:"mensal-completo", name:"Completo", price:"R$ 400", note:"/ mês",
+    features:["Tudo do Essencial","Ajustes quinzenais de treino leve","Suporte prioritário via WhatsApp"] },
+  { key:"mensal-premium", name:"Premium", price:"R$ 480", note:"/ mês",
+    features:["Tudo do Completo","1 chamada de vídeo mensal com Tarick","Prioridade máxima de atendimento"] },
+];
+const BIMESTRAL = [
+  { key:"bi-essencial", name:"Essencial", price:"R$ 550", note:"a cada 2 meses", save:"Economia de R$ 50",
+    features:["4 acompanhamentos semanais","Ajustes de plano conforme evolução","Suporte via WhatsApp"] },
+  { key:"bi-completo", name:"Completo", price:"R$ 750", note:"a cada 2 meses", save:"Economia de R$ 50",
+    features:["Tudo do Essencial","Ajustes quinzenais de treino leve","Suporte prioritário via WhatsApp"] },
+  { key:"bi-premium", name:"Premium", price:"R$ 900", note:"a cada 2 meses", save:"Economia de R$ 60",
+    features:["Tudo do Completo","1 chamada de vídeo mensal com Tarick","Prioridade máxima de atendimento"] },
+];
+
+const PAYMENTS = {
+  "consultoria": { title:"Consultoria Nutricional", price:"R$ 250", note:"pagamento único",
+    items:["1 consulta nutricional completa (60 min)","Plano alimentar personalizado","1 retorno de ajustes (30 min)","Relatório de composição corporal"] },
+  "nutri-app": { title:"Nutrição + App", price:"R$ 300", note:"/ mês — plano Essencial",
+    items:["Tudo da Consultoria Nutricional","Acesso ao app exclusivo","4 acompanhamentos semanais","Suporte via WhatsApp"] },
+  "mensal-essencial": { title:"Nutrição + App — Essencial (Mensal)", price:"R$ 300", note:"/ mês",
+    items:["4 acompanhamentos semanais","Ajustes de plano conforme evolução","Suporte via WhatsApp"] },
+  "mensal-completo": { title:"Nutrição + App — Completo (Mensal)", price:"R$ 400", note:"/ mês",
+    items:["Tudo do Essencial","Ajustes quinzenais de treino leve","Suporte prioritário via WhatsApp"] },
+  "mensal-premium": { title:"Nutrição + App — Premium (Mensal)", price:"R$ 480", note:"/ mês",
+    items:["Tudo do Completo","1 chamada de vídeo mensal","Prioridade máxima de atendimento"] },
+  "bi-essencial": { title:"Nutrição + App — Essencial (Bimestral)", price:"R$ 550", note:"a cada 2 meses · economia de R$ 50",
+    items:["4 acompanhamentos semanais","Ajustes de plano conforme evolução","Suporte via WhatsApp"] },
+  "bi-completo": { title:"Nutrição + App — Completo (Bimestral)", price:"R$ 750", note:"a cada 2 meses · economia de R$ 50",
+    items:["Tudo do Essencial","Ajustes quinzenais de treino leve","Suporte prioritário via WhatsApp"] },
+  "bi-premium": { title:"Nutrição + App — Premium (Bimestral)", price:"R$ 900", note:"a cada 2 meses · economia de R$ 60",
+    items:["Tudo do Completo","1 chamada de vídeo mensal","Prioridade máxima de atendimento"] },
+  "indicacao": { title:"Programa de Indicação", price:"R$ 20 – R$ 50", note:"bônus por indicação confirmada", payout:true,
+    items:["R$ 20 por indicação no plano Consultoria","R$ 30 por indicação no plano Nutrição + App","R$ 50 por indicação no plano Completão"] },
+};
+
+/* ============ TEMPLATES ============ */
+function tierCard(t){
+  const priceBlock = t.price
+    ? `<span class="amount">${t.price}</span><span class="note">${t.note}</span>`
+    : `<span class="sob">SOB CONSULTA</span>`;
+  const items = t.items.map(it=>{
+    if(typeof it === "object" && it.plus){
+      return `<li class="plus">${ICON.check}<span><b>${it.text}</b> +</span></li>`;
+    }
+    return `<li>${ICON.check}<span>${it}</span></li>`;
+  }).join("");
+  const ctaAttrs = t.external ? `target="_blank" rel="noopener"` : "";
+  return `
+  <article class="tier ${t.hi?'hi':''} fade-in">
+    <div class="rank">
+      <div class="rank-stripes">${Array.from({length:t.level}).map(()=>'<span></span>').join("")}</div>
+      <span class="rank-num">NÍVEL ${t.roman}</span>
+    </div>
+    <div class="tier-icon">${t.icon}</div>
+    <h3>${t.name}</h3>
+    <div class="tagline">${t.tagline}</div>
+    <div class="tier-price">${priceBlock}</div>
+    <ul class="tier-items">${items}</ul>
+    <a class="btn-gold btn-block" href="${t.href}" ${ctaAttrs}>${t.cta}</a>
+  </article>`;
+}
+
+function compareCell(v){
+  if(v==="yes") return `<td class="yes">${ICON.check}</td>`;
+  if(v==="no") return `<td class="no">—</td>`;
+  return `<td>${v}</td>`;
+}
+
+function compareTable(){
+  const rows = COMPARE_ROWS.map(r=>`<tr><td>${r[0]}</td>${compareCell(r[1])}${compareCell(r[2])}${compareCell(r[3])}</tr>`).join("");
+  return `
+  <div class="table-scroll fade-in">
+    <table class="compare">
+      <thead><tr><th>Recurso</th><th>Consultoria</th><th class="hi">Nutrição + App</th><th>Completão</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
+
+function planCard(p, isBi){
+  const save = p.save ? `<div class="save">${p.save}</div>` : "";
+  return `
+  <div class="plan-card fade-in">
+    <h3>${p.name}</h3>
+    <div class="p-price">${p.price}<span class="p-note"> ${p.note}</span></div>
+    ${save}
+    <ul>${p.features.map(f=>`<li>${f}</li>`).join("")}</ul>
+    <a class="btn-outline btn-block" href="#/pagamento-${p.key}">${isBi?'Assinar bimestral':'Assinar mensal'}</a>
+  </div>`;
+}
+
+function renderHome(){
+  document.getElementById("app").innerHTML = `
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-tag">
+          <span>Ex-militar</span><span class="sep">/</span>
+          <span>Nutricionista</span><span class="sep">/</span>
+          <span>8+ anos de resultados</span>
         </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-                <p class="text-onca-green font-bold uppercase tracking-[0.3em] text-sm mb-4">Instinto. Força. Território.</p>
-                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl uppercase leading-[0.95] text-white glow-text">
-                    A evolução<br><span class="text-onca-green">selvagem</span> do<br>seu corpo
-                </h1>
-                <p class="mt-6 text-lg text-gray-300 max-w-md">
-                    Treinamento de força inspirado no predador mais eficiente da selva: sem desperdício de movimento, sem desperdício de tempo. Só resultado.
-                </p>
-                <div class="mt-8 flex flex-wrap gap-4">
-                    <a href="#planos" class="bg-onca-green text-jungle-black px-8 py-4 font-black uppercase tracking-widest hover:bg-white transition-all glow-btn">Ver Planos</a>
-                    <a href="#metodo" class="border border-onca-green/50 text-white px-8 py-4 font-black uppercase tracking-widest hover:border-onca-green transition-all">O Método</a>
-                </div>
-            </div>
-
-            <div class="flex justify-center">
-                <img src="onca-mascote.png" class="w-full max-w-md drop-shadow-[0_0_40px_rgba(0,255,136,0.35)]">
-            </div>
+        <h1 class="headline">Nutrição <em>estratégica</em><br>para seus objetivos</h1>
+        <p class="hero-sub">Planos alimentares construídos com disciplina, dados e acompanhamento real — do primeiro relatório de composição corporal ao treino integrado.</p>
+        <div class="hero-actions">
+          <a href="#servicos" class="btn-gold">Ver serviços</a>
+          <a href="#/planos" class="btn-outline">Ver planos de assinatura</a>
         </div>
-    </section>
-
-    <div class="claw-divider"></div>
-
-    <!-- O MÉTODO -->
-    <section id="metodo" class="py-24 spot-texture">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-16">
-                <p class="text-onca-green font-bold uppercase tracking-[0.3em] text-sm mb-3">O Método</p>
-                <h2 class="font-display text-4xl sm:text-5xl uppercase text-white">Três instintos, um objetivo</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
-                    <div class="icon-badge mb-5">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="9"></circle>
-                            <circle cx="12" cy="12" r="4.5"></circle>
-                            <circle cx="12" cy="12" r="0.8" fill="#00ff88"></circle>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-2xl uppercase text-onca-green mb-3">Emboscada</h3>
-                    <p class="text-gray-300">Avaliação inicial e plano de treino personalizado, focado no ponto exato onde seu corpo precisa evoluir.</p>
-                </div>
-                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
-                    <div class="icon-badge mb-5">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 21l4-14 5 4 5-9 4 19H3z"></path>
-                            <path d="M3 21h18"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-2xl uppercase text-onca-green mb-3">Território</h3>
-                    <p class="text-gray-300">Progressão de carga estruturada em ciclos, construindo força de forma consistente, sem platôs.</p>
-                </div>
-                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
-                    <div class="icon-badge mb-5">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 8l3 2 5-6 5 6 3-2-2 10H6L4 8z"></path>
-                            <path d="M6 18h12"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-2xl uppercase text-onca-green mb-3">Domínio</h3>
-                    <p class="text-gray-300">Acompanhamento constante e ajustes finos até você alcançar o resultado que veio buscar.</p>
-                </div>
-            </div>
+        <div class="service-record">
+          <div><div class="label">Formação</div><div class="val">Bacharel em Nutrição</div></div>
+          <div><div class="label">Especialização</div><div class="val">EAFS</div></div>
+          <div><div class="label">Experiência</div><div class="val">8+ anos</div></div>
+          <div><div class="label">Origem</div><div class="val">Ex-militar</div></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <div class="claw-divider"></div>
+  <section id="servicos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Serviços</div>
+        <h2>Três níveis, um objetivo</h2>
+        <p>Escolha o grau de acompanhamento que faz sentido para o seu momento. Cada nível inclui integralmente o anterior.</p>
+      </div>
+      <div class="tiers">${TIERS.map(tierCard).join("")}</div>
+    </div>
+  </section>
 
-    <!-- DIFERENCIAIS -->
-    <section id="diferenciais" class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-16">
-                <p class="text-onca-green font-bold uppercase tracking-[0.3em] text-sm mb-3">Diferenciais</p>
-                <h2 class="font-display text-4xl sm:text-5xl uppercase text-white">Por que caçar resultados comigo</h2>
-            </div>
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Comparativo</div>
+        <h2>O que muda entre os níveis</h2>
+      </div>
+      ${compareTable()}
+    </div>
+  </section>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="group text-center flex flex-col items-center">
-                    <div class="icon-badge icon-idle mb-5">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L12 3z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-lg uppercase text-white mb-2">Método Comprovado</h3>
-                    <p class="text-gray-400 text-sm">Estrutura testada em campo, sem fórmula genérica de internet.</p>
-                </div>
-                <div class="group text-center flex flex-col items-center">
-                    <div class="icon-badge icon-idle mb-5">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21a8 8 0 10-16 0"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-lg uppercase text-white mb-2">Atendimento 1 a 1</h3>
-                    <p class="text-gray-400 text-sm">Treino ajustado à sua rotina, seu corpo e seus objetivos reais.</p>
-                </div>
-                <div class="group text-center flex flex-col items-center">
-                    <div class="icon-badge icon-idle mb-5">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 3v18h18"></path>
-                            <path d="M7 15l3-4 3 3 5-7"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-lg uppercase text-white mb-2">Evolução Registrada</h3>
-                    <p class="text-gray-400 text-sm">Ajustes por dados e progresso real, não achismo.</p>
-                </div>
-                <div class="group text-center flex flex-col items-center">
-                    <div class="icon-badge icon-idle mb-5">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-lg uppercase text-white mb-2">Suporte Direto</h3>
-                    <p class="text-gray-400 text-sm">Dúvida no treino ou na dieta? Resposta direta, sem enrolação.</p>
-                </div>
-            </div>
+  <section id="sobre">
+    <div class="wrap about-grid">
+      <div>
+        <div class="about-photo fade-in">
+          ${ICON.silhouette}
+          <div class="frame-label">Tarick Victor — Nutricionista</div>
         </div>
-    </section>
-
-    <div class="claw-divider"></div>
-
-    <!-- PLANOS -->
-    <section id="planos" class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-16">
-                <p class="text-onca-green font-bold uppercase tracking-[0.3em] text-sm mb-3">Planos</p>
-                <h2 class="font-display text-4xl sm:text-5xl uppercase text-white">Escolha seu território</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Plano 1 -->
-                <div class="bg-jungle-dark border border-green-900/30 p-8 flex flex-col">
-                    <h3 class="font-display text-2xl uppercase text-white mb-2">Filhote</h3>
-                    <p class="text-gray-400 text-sm mb-6">Para quem está começando a caçada</p>
-                    <p class="text-4xl font-black text-onca-green mb-6">R$ 149<span class="text-base text-gray-400 font-normal">/mês</span></p>
-                    <ul class="text-gray-300 space-y-2 mb-8 flex-1 text-sm">
-                        <li>+ Treino mensal personalizado</li>
-                        <li>+ Suporte via app</li>
-                        <li>+ Ajustes a cada 4 semanas</li>
-                    </ul>
-                    <a href="#contato" class="border border-onca-green text-onca-green text-center px-6 py-3 font-black uppercase tracking-wider hover:bg-onca-green hover:text-jungle-black transition-all">Escolher</a>
-                </div>
-
-                <!-- Plano 2 - destaque -->
-                <div class="bg-jungle-dark border-2 border-onca-green p-8 flex flex-col relative shadow-[0_0_40px_rgba(0,255,136,0.15)]">
-                    <span class="absolute -top-4 left-8 bg-onca-green text-jungle-black text-xs font-black uppercase tracking-widest px-4 py-1 flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5 icon-idle" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 15.3l-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L12 2z"></path></svg>
-                        Mais Escolhido
-                    </span>
-                    <h3 class="font-display text-2xl uppercase text-white mb-2">Predador</h3>
-                    <p class="text-gray-400 text-sm mb-6">Para quem já domina o território</p>
-                    <p class="text-4xl font-black text-onca-green mb-6">R$ 289<span class="text-base text-gray-400 font-normal">/mês</span></p>
-                    <ul class="text-gray-300 space-y-2 mb-8 flex-1 text-sm">
-                        <li>+ Tudo do plano Filhote</li>
-                        <li>+ Consultoria semanal ao vivo</li>
-                        <li>+ Plano nutricional incluso</li>
-                        <li>+ Ajustes quinzenais</li>
-                    </ul>
-                    <a href="#contato" class="bg-onca-green text-jungle-black text-center px-6 py-3 font-black uppercase tracking-wider hover:bg-white transition-all glow-btn">Escolher</a>
-                </div>
-
-                <!-- Plano 3 -->
-                <div class="bg-jungle-dark border border-green-900/30 p-8 flex flex-col">
-                    <h3 class="font-display text-2xl uppercase text-white mb-2">Alfa</h3>
-                    <p class="text-gray-400 text-sm mb-6">Acompanhamento 1 a 1 completo</p>
-                    <p class="text-4xl font-black text-onca-green mb-6">R$ 549<span class="text-base text-gray-400 font-normal">/mês</span></p>
-                    <ul class="text-gray-300 space-y-2 mb-8 flex-1 text-sm">
-                        <li>+ Tudo do plano Predador</li>
-                        <li>+ Contato direto diário</li>
-                        <li>+ Sessões presenciais mensais</li>
-                        <li>+ Prioridade total de agenda</li>
-                    </ul>
-                    <a href="#contato" class="border border-onca-green text-onca-green text-center px-6 py-3 font-black uppercase tracking-wider hover:bg-onca-green hover:text-jungle-black transition-all">Escolher</a>
-                </div>
-            </div>
+      </div>
+      <div class="fade-in">
+        <div class="eyebrow">Sobre</div>
+        <h2 style="margin-top:14px;">Disciplina aplicada à nutrição</h2>
+        <div class="about-text" style="margin-top:22px;">
+          <p>Antes de atender no consultório, Tarick serviu nas Forças Armadas — uma experiência que moldou a forma como conduz cada acompanhamento: metas claras, execução consistente e revisão constante de resultados.</p>
+          <p>Há mais de 8 anos aplicando essa mentalidade à nutrição, hoje une avaliação técnica, tecnologia e, quando necessário, treino físico integrado para levar o paciente do diagnóstico ao resultado sustentável.</p>
         </div>
-    </section>
-
-    <div class="claw-divider"></div>
-
-    <!-- DEPOIMENTOS -->
-    <section id="depoimentos" class="py-24 spot-texture">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-16">
-                <p class="text-onca-green font-bold uppercase tracking-[0.3em] text-sm mb-3">Serviços Disponíveis</p>
-                <h2 class="font-display text-4xl sm:text-5xl uppercase text-white">Encontre o Atendimento Perfeito</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors flex flex-col">
-                    <div class="icon-badge mb-5">
-                        <img src="7490885e-7ba8-47d6-9332-6649b67916c5.png" alt="Onça" width="120" height="120">
-                            <circle cx="9" cy="7" r="3"></circle>
-                            <circle cx="16" cy="12" r="2.5"></circle>
-                            <path d="M4 20c1-3.5 3-5 5-5s3.5 1.2 4 3"></path>
-                            <path d="M13 17c.5-1.8 1.8-3 3-3s2.3 1 2.5 2.5"></path>
-                        </svg>
-                    </div>
-                    <p class="text-gray-300 mb-4 font-bold">Massoterapia com Ventosa</p>
-                    <p class="text-onca-green text-sm flex-1">Sinta a diferença já nas primeiras sessões! A terapia com ventosas ajuda a aliviar dores musculares, reduzir tensões, diminuir inchaços e melhorar a mobilidade das articulações. É um tratamento natural que estimula a circulação sanguínea, promove relaxamento e potencializa a recuperação do corpo, sendo uma excelente aliada para quem busca mais saúde, disposição e qualidade de vida.</p>
-                </div>
-                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors flex flex-col">
-                    <div class="icon-badge mb-5">
-                        <img src="Guia Definitivo.png" alt="Onça" width="120" height="120">
-                            <path d="M4 4.5A2.5 2.5 0 016.5 2H20v17H6.5A2.5 2.5 0 004 21.5v-17z"></path>
-                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path>
-                        </svg>
-                    </div>
-                    <p class="text-gray-300 mb-4 font-bold">eBook: Guia Definitivo da Musculação</p>
-                    <p class="text-onca-green text-sm flex-1">O guia perfeito está aqui! Este eBook contém tudo o que você precisa saber sobre como começar a fazer musculação. Ele também apresenta dicas exclusivas sobre nutrição, treinamento e muito mais. Adquira agora e comece a construir.</p>
-                </div>
-                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors flex flex-col">
-                    <div class="icon-badge mb-5">
-                        <img src="Receitas Fitness.png" alt="Onça" width="120" height="120">
-                            <path d="M4 12a8 8 0 0116 0z"></path>
-                            <path d="M4 12h16"></path>
-                            <path d="M12 4v0"></path>
-                        </svg>
-                    </div>
-                    <p class="text-gray-300 mb-4 font-bold">eBook: Receitas Fitness</p>
-                    <p class="text-onca-green text-sm flex-1">Dezenas de receitas fitness deliciosas, práticas e fáceis de preparar, ideais para quem deseja ter uma alimentação mais saudável no dia a dia, com opções adaptadas para diabetes, hipertensão, anemia e outras condições. Garanta já o seu eBook e comece hoje a transformar seus hábitos!</p>
-                </div>
-            </div>
+        <div class="dossier" style="margin-top:32px;">
+          <div class="dossier-row"><div class="k">Formação</div><div class="v">Bacharelado em Nutrição</div></div>
+          <div class="dossier-row"><div class="k">Especializações</div><div class="v">EAFS</div></div>
+          <div class="dossier-row"><div class="k">Background</div><div class="v">Ex-militar — disciplina aplicada à rotina alimentar</div></div>
+          <div class="dossier-row"><div class="k">Atuação</div><div class="v">Consultoria clínica, acompanhamento digital e treino integrado</div></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <div class="claw-divider"></div>
+  <section class="alt">
+    <div class="wrap">
+      <div class="referral-box fade-in">
+        <div>
+          <div class="eyebrow">Indicação</div>
+          <h2 style="margin-top:14px;">Indique e seja recompensado</h2>
+          <p class="muted" style="margin-top:16px;max-width:420px;">A cada pessoa indicada que fechar um plano, você recebe um bônus em dinheiro. Sem limite de indicações.</p>
+          <a href="#/pagamento-indicacao" class="btn-gold" style="margin-top:28px;display:inline-block;">Solicitar meu bônus</a>
+        </div>
+        <div class="referral-tiers">
+          <div class="rtier"><div class="rt-label">Consultoria</div><div class="rt-amt">R$ 20</div></div>
+          <div class="rtier"><div class="rt-label">Nutrição+App</div><div class="rt-amt">R$ 30</div></div>
+          <div class="rtier"><div class="rt-label">Completão</div><div class="rt-amt">R$ 50</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-24 spot-texture">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-16">
-                <p class="text-onca-green font-bold uppercase tracking-[0.3em] text-sm mb-3">Perguntas Frequentes</p>
-                <h2 class="font-display text-4xl sm:text-5xl uppercase text-white">Antes de entrar no território</h2>
+  <section id="contato">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Contato</div>
+        <h2>Vamos conversar</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card fade-in">
+          <div class="eyebrow">WhatsApp</div>
+          <p>Tire dúvidas rápidas ou peça mais informações sobre qualquer nível de acompanhamento.</p>
+          <a class="btn-outline btn-block" target="_blank" rel="noopener" href="${waLink('Olá Tarick, gostaria de mais informações sobre seus serviços de nutrição.')}">Chamar no WhatsApp</a>
+        </div>
+        <div class="contact-card fade-in">
+          <div class="eyebrow">Consultoria</div>
+          <p>Pronto para começar com o nível 1? Garanta sua consulta nutricional completa.</p>
+          <a class="btn-outline btn-block" href="#/pagamento-consultoria">Comprar consultoria</a>
+        </div>
+        <div class="contact-card fade-in">
+          <div class="eyebrow">Planos de assinatura</div>
+          <p>Compare valores mensais e bimestrais do plano Nutrição + App.</p>
+          <a class="btn-outline btn-block" href="#/planos">Ver planos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+  observeFadeIns();
+}
+
+function renderPlanos(){
+  document.getElementById("app").innerHTML = `
+  <section class="page-header">
+    <div class="wrap">
+      <a class="back-link" href="#/">${ICON.arrow}&nbsp;Voltar ao início</a>
+      <div class="section-head" style="margin-top:28px;">
+        <div class="eyebrow">Nível II — Nutrição + App</div>
+        <h2>Planos de assinatura</h2>
+        <p>Escolha a periodicidade e o pacote de acompanhamento. Todos incluem consulta inicial, plano alimentar e acesso ao app exclusivo.</p>
+      </div>
+      <div class="plan-toggle">
+        <button class="active" data-target="mensal">Mensal</button>
+        <button data-target="bimestral">Bimestral</button>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="plan-cards" id="grid-mensal">${MENSAL.map(p=>planCard(p,false)).join("")}</div>
+      <div class="plan-cards" id="grid-bimestral" data-hidden="true">${BIMESTRAL.map(p=>planCard(p,true)).join("")}</div>
+    </div>
+  </section>
+  `;
+  const btns = document.querySelectorAll(".plan-toggle button");
+  btns.forEach(b=>b.addEventListener("click",()=>{
+    btns.forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    const target = b.dataset.target;
+    document.getElementById("grid-mensal").dataset.hidden = target==="mensal" ? "false":"true";
+    document.getElementById("grid-bimestral").dataset.hidden = target==="bimestral" ? "false":"true";
+  }));
+  observeFadeIns();
+}
+
+function renderPayment(slug){
+  const p = PAYMENTS[slug];
+  const app = document.getElementById("app");
+  if(!p){
+    app.innerHTML = `<section class="wrap" style="padding:100px 0;"><h2>Página não encontrada</h2><p class="muted" style="margin-top:14px;"><a class="back-link" href="#/">${ICON.arrow}&nbsp;Voltar ao início</a></p></section>`;
+    return;
+  }
+  const actionLabel = p.payout ? "Solicitar bônus de indicação" : "Confirmar pagamento";
+  const successText = p.payout
+    ? "Recebemos sua solicitação. Tarick entrará em contato para confirmar o repasse do bônus."
+    : "Recebemos seus dados. Em instantes você será direcionado para a confirmação do pagamento.";
+  app.innerHTML = `
+  <section class="page-header">
+    <div class="wrap">
+      <a class="back-link" href="#/">${ICON.arrow}&nbsp;Voltar</a>
+    </div>
+  </section>
+  <section style="padding-top:24px;">
+    <div class="wrap pay-grid">
+      <div>
+        <div class="eyebrow">${p.payout ? "Indicação" : "Pagamento"}</div>
+        <h2 style="margin-top:14px;font-size:clamp(24px,3.4vw,32px);">${p.title}</h2>
+        <p class="muted" style="margin-top:12px;max-width:480px;">${p.payout ? "Preencha seus dados para receber o bônus assim que a indicação for confirmada." : "Preencha seus dados para finalizar a contratação com segurança."}</p>
+
+        <form class="pay-form" style="margin-top:32px;" id="pay-form">
+          <div class="field">
+            <label for="f-nome">Nome completo</label>
+            <input id="f-nome" type="text" required placeholder="Seu nome completo">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email">E-mail</label>
+              <input id="f-email" type="email" required placeholder="voce@email.com">
             </div>
-
-            <div class="space-y-4">
-                <details class="group bg-jungle-dark border border-green-900/30 p-6 open:border-onca-green/50 transition-colors">
-                    <summary class="flex items-center justify-between cursor-pointer list-none font-display text-lg uppercase text-white">
-                        Preciso ter experiência prévia com treino?
-                        <svg class="faq-chevron w-5 h-5 text-onca-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
-                    </summary>
-                    <p class="text-gray-300 mt-4 text-sm">Não. O plano é montado a partir da sua avaliação inicial, então tanto iniciantes quanto quem já treina há anos recebem um programa no nível certo.</p>
-                </details>
-                <details class="group bg-jungle-dark border border-green-900/30 p-6 open:border-onca-green/50 transition-colors">
-                    <summary class="flex items-center justify-between cursor-pointer list-none font-display text-lg uppercase text-white">
-                        Como funciona o acompanhamento?
-                        <svg class="faq-chevron w-5 h-5 text-onca-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
-                    </summary>
-                    <p class="text-gray-300 mt-4 text-sm">Depende do plano escolhido: pode ser por app com ajustes periódicos, consultoria semanal ao vivo ou contato direto diário com sessões presenciais.</p>
-                </details>
-                <details class="group bg-jungle-dark border border-green-900/30 p-6 open:border-onca-green/50 transition-colors">
-                    <summary class="flex items-center justify-between cursor-pointer list-none font-display text-lg uppercase text-white">
-                        Posso trocar de plano quando quiser?
-                        <svg class="faq-chevron w-5 h-5 text-onca-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
-                    </summary>
-                    <p class="text-gray-300 mt-4 text-sm">Sim. É só falar comigo pelo WhatsApp e ajustamos o plano conforme sua evolução e sua necessidade do momento.</p>
-                </details>
-                <details class="group bg-jungle-dark border border-green-900/30 p-6 open:border-onca-green/50 transition-colors">
-                    <summary class="flex items-center justify-between cursor-pointer list-none font-display text-lg uppercase text-white">
-                        O atendimento é presencial ou online?
-                        <svg class="faq-chevron w-5 h-5 text-onca-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
-                    </summary>
-                    <p class="text-gray-300 mt-4 text-sm">Ambos. Os planos Filhote e Predador são acompanhados à distância, e o plano Alfa inclui sessões presenciais mensais.</p>
-                </details>
+            <div class="field">
+              <label for="f-tel">Telefone</label>
+              <input id="f-tel" type="tel" required placeholder="(63) 90000-0000">
             </div>
-        </div>
-    </section>
+          </div>
+          <div class="field">
+            <label for="f-cpf">CPF</label>
+            <input id="f-cpf" type="text" required placeholder="000.000.000-00">
+          </div>
+          <button type="submit" class="btn-gold btn-block" style="margin-top:8px;border:1px solid var(--gold);">${actionLabel}</button>
+          <div class="success-panel" id="success-panel" style="margin-top:20px;">
+            <div class="eyebrow">Recebido</div>
+            <p>${successText}</p>
+          </div>
+        </form>
+      </div>
 
-    <!-- CONTATO -->
-    <section id="contato" class="py-24 bg-jungle-dark border-t border-green-900/30">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="font-display text-4xl sm:text-5xl uppercase text-white mb-6">Pronto pra caçar seus resultados?</h2>
-            <p class="text-gray-300 mb-8">Fale com Tarick Victor e escolha o plano que combina com o seu momento.</p>
-            <a href="https://wa.me/5563985104574" target="_blank" rel="noopener noreferrer" class="inline-block bg-onca-green text-jungle-black px-10 py-4 font-black uppercase tracking-widest hover:bg-white transition-all glow-btn">Falar no WhatsApp</a>
-        </div>
-    </section>
+      <aside class="summary">
+        <h3>${p.title}</h3>
+        <div class="plan-note">${p.payout ? "Programa de indicação" : "Resumo do pedido"}</div>
+        <div class="summary-price">${p.price}<span> ${p.note}</span></div>
+        <ul>${p.items.map(i=>`<li>${ICON.check}<span>${i}</span></li>`).join("")}</ul>
+      </aside>
+    </div>
+  </section>
+  `;
+  document.getElementById("pay-form").addEventListener("submit",(e)=>{
+    e.preventDefault();
+    document.getElementById("success-panel").classList.add("show");
+  });
+}
 
-    <footer class="py-14 border-t border-green-900/30 text-center text-gray-500 text-sm space-y-6">
-        <p class="font-display text-lg uppercase tracking-widest text-white">Siga a caçada nas redes</p>
-        <div class="flex justify-center gap-5">
-            <a href="https://www.instagram.com/tarickvictor_personutri/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-badge" title="Instagram">
-                <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.2.27 2.9.5.7.27 1.3.63 1.9 1.2.6.6.9 1.2 1.2 1.9.24.7.45 1.7.5 2.9.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.27 2.2-.5 2.9a5.2 5.2 0 01-1.2 1.9c-.6.6-1.2.9-1.9 1.2-.7.24-1.7.45-2.9.5-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.2-.27-2.9-.5a5.2 5.2 0 01-1.9-1.2 5.2 5.2 0 01-1.2-1.9c-.24-.7-.45-1.7-.5-2.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.27-2.2.5-2.9.27-.7.63-1.3 1.2-1.9.6-.6 1.2-.9 1.9-1.2.7-.24 1.7-.45 2.9-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52 0-4.76.07-1 .05-1.6.22-2 .37-.5.2-.85.42-1.22.8-.38.37-.6.72-.8 1.22-.15.4-.32 1-.37 2C2.8 9.48 2.8 9.85 2.8 13s0 3.52.07 4.76c.05 1 .22 1.6.37 2 .2.5.42.85.8 1.22.37.38.72.6 1.22.8.4.15 1 .32 2 .37 1.24.07 1.61.07 4.76.07s3.52 0 4.76-.07c1-.05 1.6-.22 2-.37.5-.2.85-.42 1.22-.8.38-.37.6-.72.8-1.22.15-.4.32-1 .37-2 .07-1.24.07-1.61.07-4.76s0-3.52-.07-4.76c-.05-1-.22-1.6-.37-2a3.4 3.4 0 00-.8-1.22 3.4 3.4 0 00-1.22-.8c-.4-.15-1-.32-2-.37C15.52 4 15.15 4 12 4z"></path><path d="M12 7.4a4.6 4.6 0 100 9.2 4.6 4.6 0 000-9.2zm0 7.6a3 3 0 110-6 3 3 0 010 6z"></path><circle cx="16.9" cy="7.1" r="1.1"></circle></svg>
-            </a>
-            <a href="https://wa.me/5563985104574" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-badge" title="WhatsApp">
-                <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.27-.1-.46-.15-.66.15-.2.3-.75.95-.92 1.15-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.46.13-.6.13-.14.3-.34.44-.5.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.66-1.6-.9-2.2-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.52.07-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.1 4.5.72.3 1.28.5 1.72.65.72.23 1.38.2 1.9.12.58-.09 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.2-.56-.34z"></path><path d="M12 2.2A9.8 9.8 0 002.6 15.5L2 22l6.7-.6A9.8 9.8 0 1012 2.2zm0 17.9c-1.6 0-3.15-.44-4.5-1.27l-.32-.2-3.32.3.32-3.24-.2-.33A8.1 8.1 0 1112 20.1z"></path></svg>
-            </a>
-            <a href="https://www.youtube.com/@oncamaromba5472" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-badge" title="YouTube">
-                <svg viewBox="0 0 24 24"><path d="M22 12s0-3.1-.4-4.6a2.9 2.9 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.4a2.9 2.9 0 00-2 2C2 8.9 2 12 2 12s0 3.1.4 4.6a2.9 2.9 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.4a2.9 2.9 0 002-2c.4-1.5.4-4.6.4-4.6z"></path><path d="M10 9.4v5.2l4.6-2.6L10 9.4z" fill="#050505"></path></svg>
-            </a>
-            <a href="https://www.facebook.com/people/On%C3%A7a-maromba/100063709129096/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-badge" title="Facebook">
-                <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.45 2.9h-2.35v7A10 10 0 0022 12z"></path></svg>
-            </a>
-        </div>
-        <div>© <span id="year"></span> Tarick Victor. Todos os direitos reservados.</div>
-    </footer>
+/* ============ FADE-IN OBSERVER ============ */
+function observeFadeIns(){
+  const els = document.querySelectorAll(".fade-in");
+  if(!("IntersectionObserver" in window)){ els.forEach(el=>el.classList.add("in")); return; }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  },{threshold:0.12});
+  els.forEach(el=>io.observe(el));
+}
 
-    <script>
-        // Menu mobile
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.toggle('hidden') === false;
-            menuBtn.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        // Fecha o menu mobile ao clicar em um link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+/* ============ ROUTER ============ */
+function route(){
+  const hash = window.location.hash || "#/";
+  if(hash.startsWith("#/pagamento-")){
+    const slug = hash.replace("#/pagamento-","");
+    renderPayment(slug);
+    window.scrollTo(0,0);
+    return;
+  }
+  if(hash === "#/planos"){
+    renderPlanos();
+    window.scrollTo(0,0);
+    return;
+  }
+  renderHome();
+  if(hash && hash !== "#/" && hash !== "#"){
+    const id = hash.replace("#","");
+    requestAnimationFrame(()=>{
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  } else {
+    window.scrollTo(0,0);
+  }
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
 </body>
 </html>
