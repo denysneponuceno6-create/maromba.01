@@ -312,25 +312,25 @@ const ICON = {
 const TIERS = [
   {
     level:1, roman:"I", icon:ICON.plateApple,
-    name:"Consultoria Nutricional", tagline:"Só nutrição",
-    price:"R$ 250", note:"pagamento único",
+    name:"Plano Essencial", tagline:"Só nutrição",
+    price:"R$ 300", note:"pagamento único",
     items:[
-      "1 consulta nutricional completa (60 min)",
-      "Plano alimentar personalizado",
-      "1 retorno de ajustes (30 min)",
-      "Relatório de composição corporal (adipômetro / bioimpedância + medidas)"
+      "1 consulta nutricional completa",
+      "Avaliação física detalhada",
+      "1 retorno para acompanhamento",
+      "Orientações personalizadas"
     ],
     cta:"Comprar agora", href:"#/pagamento-consultoria"
   },
   {
     level:2, roman:"II", icon:ICON.platePhone, hi:true,
     name:"Nutrição + App", tagline:"Acompanhamento mensal",
-    price:"R$ 300", note:"/ mês",
+    price:"R$ 400", note:"/ mês",
     items:[
       { plus:true, text:"Tudo do nível I" },
       "Acesso ao app exclusivo",
-      "4 acompanhamentos semanais via questionário",
-      "Ajustes no plano alimentar conforme evolução",
+      "Treino online com vídeos",
+      "1 retorno para ajustes",
       "Suporte via WhatsApp para dúvidas rápidas"
     ],
     cta:"Assinar agora", href:"#/pagamento-nutri-app"
@@ -506,6 +506,7 @@ function renderHome(){
     <div class="wrap about-grid">
       <div>
         <div class="about-photo fade-in">
+        <img src="onca-mascote.png" alt="Descrição da imagem" width="120" height="120">
           ${ICON.silhouette}
           <div class="frame-label">Tarick Victor — Nutricionista</div>
         </div>
@@ -522,24 +523,6 @@ function renderHome(){
           <div class="dossier-row"><div class="k">Especializações</div><div class="v">EAFS</div></div>
           <div class="dossier-row"><div class="k">Background</div><div class="v">Ex-militar — disciplina aplicada à rotina alimentar</div></div>
           <div class="dossier-row"><div class="k">Atuação</div><div class="v">Consultoria clínica, acompanhamento digital e treino integrado</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="alt">
-    <div class="wrap">
-      <div class="referral-box fade-in">
-        <div>
-          <div class="eyebrow">Indicação</div>
-          <h2 style="margin-top:14px;">Indique e seja recompensado</h2>
-          <p class="muted" style="margin-top:16px;max-width:420px;">A cada pessoa indicada que fechar um plano, você recebe um bônus em dinheiro. Sem limite de indicações.</p>
-          <a href="#/pagamento-indicacao" class="btn-gold" style="margin-top:28px;display:inline-block;">Solicitar meu bônus</a>
-        </div>
-        <div class="referral-tiers">
-          <div class="rtier"><div class="rt-label">Consultoria</div><div class="rt-amt">R$ 20</div></div>
-          <div class="rtier"><div class="rt-label">Nutrição+App</div><div class="rt-amt">R$ 30</div></div>
-          <div class="rtier"><div class="rt-label">Completão</div><div class="rt-amt">R$ 50</div></div>
         </div>
       </div>
     </div>
@@ -608,71 +591,6 @@ function renderPlanos(){
   observeFadeIns();
 }
 
-function renderPayment(slug){
-  const p = PAYMENTS[slug];
-  const app = document.getElementById("app");
-  if(!p){
-    app.innerHTML = `<section class="wrap" style="padding:100px 0;"><h2>Página não encontrada</h2><p class="muted" style="margin-top:14px;"><a class="back-link" href="#/">${ICON.arrow}&nbsp;Voltar ao início</a></p></section>`;
-    return;
-  }
-  const actionLabel = p.payout ? "Solicitar bônus de indicação" : "Confirmar pagamento";
-  const successText = p.payout
-    ? "Recebemos sua solicitação. Tarick entrará em contato para confirmar o repasse do bônus."
-    : "Recebemos seus dados. Em instantes você será direcionado para a confirmação do pagamento.";
-  app.innerHTML = `
-  <section class="page-header">
-    <div class="wrap">
-      <a class="back-link" href="#/">${ICON.arrow}&nbsp;Voltar</a>
-    </div>
-  </section>
-  <section style="padding-top:24px;">
-    <div class="wrap pay-grid">
-      <div>
-        <div class="eyebrow">${p.payout ? "Indicação" : "Pagamento"}</div>
-        <h2 style="margin-top:14px;font-size:clamp(24px,3.4vw,32px);">${p.title}</h2>
-        <p class="muted" style="margin-top:12px;max-width:480px;">${p.payout ? "Preencha seus dados para receber o bônus assim que a indicação for confirmada." : "Preencha seus dados para finalizar a contratação com segurança."}</p>
-
-        <form class="pay-form" style="margin-top:32px;" id="pay-form">
-          <div class="field">
-            <label for="f-nome">Nome completo</label>
-            <input id="f-nome" type="text" required placeholder="Seu nome completo">
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="f-email">E-mail</label>
-              <input id="f-email" type="email" required placeholder="voce@email.com">
-            </div>
-            <div class="field">
-              <label for="f-tel">Telefone</label>
-              <input id="f-tel" type="tel" required placeholder="(63) 90000-0000">
-            </div>
-          </div>
-          <div class="field">
-            <label for="f-cpf">CPF</label>
-            <input id="f-cpf" type="text" required placeholder="000.000.000-00">
-          </div>
-          <button type="submit" class="btn-gold btn-block" style="margin-top:8px;border:1px solid var(--gold);">${actionLabel}</button>
-          <div class="success-panel" id="success-panel" style="margin-top:20px;">
-            <div class="eyebrow">Recebido</div>
-            <p>${successText}</p>
-          </div>
-        </form>
-      </div>
-
-      <aside class="summary">
-        <h3>${p.title}</h3>
-        <div class="plan-note">${p.payout ? "Programa de indicação" : "Resumo do pedido"}</div>
-        <div class="summary-price">${p.price}<span> ${p.note}</span></div>
-        <ul>${p.items.map(i=>`<li>${ICON.check}<span>${i}</span></li>`).join("")}</ul>
-      </aside>
-    </div>
-  </section>
-  `;
-  document.getElementById("pay-form").addEventListener("submit",(e)=>{
-    e.preventDefault();
-    document.getElementById("success-panel").classList.add("show");
-  });
-}
 
 /* ============ FADE-IN OBSERVER ============ */
 function observeFadeIns(){
