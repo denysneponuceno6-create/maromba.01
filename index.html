@@ -71,6 +71,87 @@
         @media (prefers-reduced-motion: reduce) {
             * { animation: none !important; transition: none !important; }
         }
+
+        /* Ícones animados */
+        @keyframes prowl-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        @keyframes soft-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .icon-badge {
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0,255,136,0.3);
+            background: radial-gradient(circle at 30% 30%, rgba(0,255,136,0.12), transparent 70%);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+        }
+
+        .icon-badge svg {
+            width: 1.75rem;
+            height: 1.75rem;
+            stroke: #00ff88;
+            transition: stroke 0.35s ease;
+        }
+
+        .group:hover .icon-badge {
+            transform: scale(1.12) rotate(-4deg);
+            box-shadow: 0 0 28px rgba(0,255,136,0.5);
+            border-color: #00ff88;
+            background: radial-gradient(circle at 30% 30%, rgba(0,255,136,0.25), transparent 70%);
+        }
+
+        .icon-idle {
+            animation: prowl-pulse 3.2s ease-in-out infinite;
+        }
+
+        .icon-idle-float {
+            animation: soft-float 3.6s ease-in-out infinite;
+        }
+
+        .social-badge {
+            width: 3.25rem;
+            height: 3.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 1px solid rgba(0,255,136,0.25);
+            background: #111111;
+            transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .social-badge svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: #d1d5db;
+            transition: fill 0.35s ease;
+        }
+
+        .social-badge:hover {
+            transform: scale(1.15) rotate(-6deg);
+            box-shadow: 0 0 25px rgba(0,255,136,0.5);
+            border-color: #00ff88;
+        }
+
+        .social-badge:hover svg {
+            fill: #00ff88;
+        }
+
+        details[open] .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-chevron {
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body class="font-sans antialiased bg-jungle overflow-x-hidden">
@@ -156,17 +237,89 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
+                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
+                    <div class="icon-badge mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <circle cx="12" cy="12" r="4.5"></circle>
+                            <circle cx="12" cy="12" r="0.8" fill="#00ff88"></circle>
+                        </svg>
+                    </div>
                     <h3 class="font-display text-2xl uppercase text-onca-green mb-3">Emboscada</h3>
                     <p class="text-gray-300">Avaliação inicial e plano de treino personalizado, focado no ponto exato onde seu corpo precisa evoluir.</p>
                 </div>
-                <div class="bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
+                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
+                    <div class="icon-badge mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21l4-14 5 4 5-9 4 19H3z"></path>
+                            <path d="M3 21h18"></path>
+                        </svg>
+                    </div>
                     <h3 class="font-display text-2xl uppercase text-onca-green mb-3">Território</h3>
                     <p class="text-gray-300">Progressão de carga estruturada em ciclos, construindo força de forma consistente, sem platôs.</p>
                 </div>
-                <div class="bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
+                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors">
+                    <div class="icon-badge mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 8l3 2 5-6 5 6 3-2-2 10H6L4 8z"></path>
+                            <path d="M6 18h12"></path>
+                        </svg>
+                    </div>
                     <h3 class="font-display text-2xl uppercase text-onca-green mb-3">Domínio</h3>
                     <p class="text-gray-300">Acompanhamento constante e ajustes finos até você alcançar o resultado que veio buscar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="claw-divider"></div>
+
+    <!-- DIFERENCIAIS -->
+    <section id="diferenciais" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mb-16">
+                <p class="text-onca-green font-bold uppercase tracking-[0.3em] text-sm mb-3">Diferenciais</p>
+                <h2 class="font-display text-4xl sm:text-5xl uppercase text-white">Por que caçar resultados comigo</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group text-center flex flex-col items-center">
+                    <div class="icon-badge icon-idle mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L12 3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg uppercase text-white mb-2">Método Comprovado</h3>
+                    <p class="text-gray-400 text-sm">Estrutura testada em campo, sem fórmula genérica de internet.</p>
+                </div>
+                <div class="group text-center flex flex-col items-center">
+                    <div class="icon-badge icon-idle mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21a8 8 0 10-16 0"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg uppercase text-white mb-2">Atendimento 1 a 1</h3>
+                    <p class="text-gray-400 text-sm">Treino ajustado à sua rotina, seu corpo e seus objetivos reais.</p>
+                </div>
+                <div class="group text-center flex flex-col items-center">
+                    <div class="icon-badge icon-idle mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"></path>
+                            <path d="M7 15l3-4 3 3 5-7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg uppercase text-white mb-2">Evolução Registrada</h3>
+                    <p class="text-gray-400 text-sm">Ajustes por dados e progresso real, não achismo.</p>
+                </div>
+                <div class="group text-center flex flex-col items-center">
+                    <div class="icon-badge icon-idle mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg uppercase text-white mb-2">Suporte Direto</h3>
+                    <p class="text-gray-400 text-sm">Dúvida no treino ou na dieta? Resposta direta, sem enrolação.</p>
                 </div>
             </div>
         </div>
@@ -198,7 +351,10 @@
 
                 <!-- Plano 2 - destaque -->
                 <div class="bg-jungle-dark border-2 border-onca-green p-8 flex flex-col relative shadow-[0_0_40px_rgba(0,255,136,0.15)]">
-                    <span class="absolute -top-4 left-8 bg-onca-green text-jungle-black text-xs font-black uppercase tracking-widest px-4 py-1">Mais Escolhido</span>
+                    <span class="absolute -top-4 left-8 bg-onca-green text-jungle-black text-xs font-black uppercase tracking-widest px-4 py-1 flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 icon-idle" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 15.3l-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L12 2z"></path></svg>
+                        Mais Escolhido
+                    </span>
                     <h3 class="font-display text-2xl uppercase text-white mb-2">Predador</h3>
                     <p class="text-gray-400 text-sm mb-6">Para quem já domina o território</p>
                     <p class="text-4xl font-black text-onca-green mb-6">R$ 289<span class="text-base text-gray-400 font-normal">/mês</span></p>
@@ -239,20 +395,82 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-jungle-dark border border-green-900/30 p-8">
-                    <p class="text-gray-300 mb-6">Massoterepia com ventosa😴</p>
-                    <p class="font-bold text-onca-green">Sinta a diferença já nas primeiras sessões! A terapia com ventosas ajuda a aliviar dores musculares, reduzir tensões, diminuir inchaços e melhorar a mobilidade das articulações. É um tratamento natural que estimula a circulação sanguínea, promove relaxamento e potencializa a recuperação do corpo, sendo uma excelente aliada para quem busca mais saúde, disposição e qualidade de vida. </p>
+                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors flex flex-col">
+                    <div class="icon-badge mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="7" r="3"></circle>
+                            <circle cx="16" cy="12" r="2.5"></circle>
+                            <path d="M4 20c1-3.5 3-5 5-5s3.5 1.2 4 3"></path>
+                            <path d="M13 17c.5-1.8 1.8-3 3-3s2.3 1 2.5 2.5"></path>
+                        </svg>
+                    </div>
+                    <p class="text-gray-300 mb-4 font-bold">Massoterapia com Ventosa</p>
+                    <p class="text-onca-green text-sm flex-1">Sinta a diferença já nas primeiras sessões! A terapia com ventosas ajuda a aliviar dores musculares, reduzir tensões, diminuir inchaços e melhorar a mobilidade das articulações. É um tratamento natural que estimula a circulação sanguínea, promove relaxamento e potencializa a recuperação do corpo, sendo uma excelente aliada para quem busca mais saúde, disposição e qualidade de vida.</p>
                 </div>
-                <div class="bg-jungle-dark border border-green-900/30 p-8">
-                    <p class="text-gray-300 mb-6">Transforme seu corpo com o guia definitivo da musculação! 💪</p>
-                    <p class="font-bold text-onca-green">O livro de musculação perfeito está aqui! Este eBook contém tudo o que você precisa saber sobre como começar a fazer musculação. Ele também apresenta dicas exclusivas sobre nutrição, treinamento e muito mais. Adquira este eBook agora e comece a construir. </p>
+                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors flex flex-col">
+                    <div class="icon-badge mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4.5A2.5 2.5 0 016.5 2H20v17H6.5A2.5 2.5 0 004 21.5v-17z"></path>
+                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path>
+                        </svg>
+                    </div>
+                    <p class="text-gray-300 mb-4 font-bold">eBook: Guia Definitivo da Musculação</p>
+                    <p class="text-onca-green text-sm flex-1">O guia perfeito está aqui! Este eBook contém tudo o que você precisa saber sobre como começar a fazer musculação. Ele também apresenta dicas exclusivas sobre nutrição, treinamento e muito mais. Adquira agora e comece a construir.</p>
                 </div>
-                <div class="bg-jungle-dark border border-green-900/30 p-8">
-                    <p class="text-gray-300 mb-6">Descubra como comer bem sem abrir mão do sabor! 🥗</p>
-                    <p class="font-bold text-onca-green">Neste eBook você encontrará dezenas de receitas fitness deliciosas, práticas e fáceis de preparar, ideais para quem deseja ter uma alimentação mais saudável no dia a dia. Além disso, o conteúdo reúne receitas adaptadas para diferentes necessidades alimentares, incluindo opções voltadas para pessoas com diabetes, hipertensão, anemia e outras condições que exigem maior cuidado com a alimentação.
+                <div class="group bg-jungle-dark border border-green-900/30 p-8 hover:border-onca-green/50 transition-colors flex flex-col">
+                    <div class="icon-badge mb-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 12a8 8 0 0116 0z"></path>
+                            <path d="M4 12h16"></path>
+                            <path d="M12 4v0"></path>
+                        </svg>
+                    </div>
+                    <p class="text-gray-300 mb-4 font-bold">eBook: Receitas Fitness</p>
+                    <p class="text-onca-green text-sm flex-1">Dezenas de receitas fitness deliciosas, práticas e fáceis de preparar, ideais para quem deseja ter uma alimentação mais saudável no dia a dia, com opções adaptadas para diabetes, hipertensão, anemia e outras condições. Garanta já o seu eBook e comece hoje a transformar seus hábitos!</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-Descubra como comer bem, cuidar da sua saúde e tornar cada refeição uma experiência saborosa. Garanta já o seu eBook e comece hoje mesmo a transformar seus hábitos!</p>
-                </div>
+    <div class="claw-divider"></div>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 spot-texture">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mb-16">
+                <p class="text-onca-green font-bold uppercase tracking-[0.3em] text-sm mb-3">Perguntas Frequentes</p>
+                <h2 class="font-display text-4xl sm:text-5xl uppercase text-white">Antes de entrar no território</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="group bg-jungle-dark border border-green-900/30 p-6 open:border-onca-green/50 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer list-none font-display text-lg uppercase text-white">
+                        Preciso ter experiência prévia com treino?
+                        <svg class="faq-chevron w-5 h-5 text-onca-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+                    </summary>
+                    <p class="text-gray-300 mt-4 text-sm">Não. O plano é montado a partir da sua avaliação inicial, então tanto iniciantes quanto quem já treina há anos recebem um programa no nível certo.</p>
+                </details>
+                <details class="group bg-jungle-dark border border-green-900/30 p-6 open:border-onca-green/50 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer list-none font-display text-lg uppercase text-white">
+                        Como funciona o acompanhamento?
+                        <svg class="faq-chevron w-5 h-5 text-onca-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+                    </summary>
+                    <p class="text-gray-300 mt-4 text-sm">Depende do plano escolhido: pode ser por app com ajustes periódicos, consultoria semanal ao vivo ou contato direto diário com sessões presenciais.</p>
+                </details>
+                <details class="group bg-jungle-dark border border-green-900/30 p-6 open:border-onca-green/50 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer list-none font-display text-lg uppercase text-white">
+                        Posso trocar de plano quando quiser?
+                        <svg class="faq-chevron w-5 h-5 text-onca-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+                    </summary>
+                    <p class="text-gray-300 mt-4 text-sm">Sim. É só falar comigo pelo WhatsApp e ajustamos o plano conforme sua evolução e sua necessidade do momento.</p>
+                </details>
+                <details class="group bg-jungle-dark border border-green-900/30 p-6 open:border-onca-green/50 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer list-none font-display text-lg uppercase text-white">
+                        O atendimento é presencial ou online?
+                        <svg class="faq-chevron w-5 h-5 text-onca-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+                    </summary>
+                    <p class="text-gray-300 mt-4 text-sm">Ambos. Os planos Filhote e Predador são acompanhados à distância, e o plano Alfa inclui sessões presenciais mensais.</p>
+                </details>
             </div>
         </div>
     </section>
@@ -266,12 +484,21 @@ Descubra como comer bem, cuidar da sua saúde e tornar cada refeição uma exper
         </div>
     </section>
 
-    <footer class="py-10 border-t border-green-900/30 text-center text-gray-500 text-sm space-y-3">
-        <div class="flex justify-center gap-6 text-xs uppercase tracking-widest">
-            <a href="https://www.instagram.com/tarickvictor_personutri/" target="_blank" rel="noopener noreferrer" class="hover:text-onca-green transition-colors">Instagram</a>
-            <a href="https://wa.me/5563985104574" target="_blank" rel="noopener noreferrer" class="hover:text-onca-green transition-colors">WhatsApp</a>
-            <a href="https://www.youtube.com/@oncamaromba5472" target="_blank" rel="noopener noreferrer" class="hover:text-onca-green transition-colors">youtube</a>
-            <a href="https://www.facebook.com/people/On%C3%A7a-maromba/100063709129096/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="hover:text-onca-green transition-colors">facebook</a>
+    <footer class="py-14 border-t border-green-900/30 text-center text-gray-500 text-sm space-y-6">
+        <p class="font-display text-lg uppercase tracking-widest text-white">Siga a caçada nas redes</p>
+        <div class="flex justify-center gap-5">
+            <a href="https://www.instagram.com/tarickvictor_personutri/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-badge" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.2.27 2.9.5.7.27 1.3.63 1.9 1.2.6.6.9 1.2 1.2 1.9.24.7.45 1.7.5 2.9.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.27 2.2-.5 2.9a5.2 5.2 0 01-1.2 1.9c-.6.6-1.2.9-1.9 1.2-.7.24-1.7.45-2.9.5-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.2-.27-2.9-.5a5.2 5.2 0 01-1.9-1.2 5.2 5.2 0 01-1.2-1.9c-.24-.7-.45-1.7-.5-2.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.27-2.2.5-2.9.27-.7.63-1.3 1.2-1.9.6-.6 1.2-.9 1.9-1.2.7-.24 1.7-.45 2.9-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52 0-4.76.07-1 .05-1.6.22-2 .37-.5.2-.85.42-1.22.8-.38.37-.6.72-.8 1.22-.15.4-.32 1-.37 2C2.8 9.48 2.8 9.85 2.8 13s0 3.52.07 4.76c.05 1 .22 1.6.37 2 .2.5.42.85.8 1.22.37.38.72.6 1.22.8.4.15 1 .32 2 .37 1.24.07 1.61.07 4.76.07s3.52 0 4.76-.07c1-.05 1.6-.22 2-.37.5-.2.85-.42 1.22-.8.38-.37.6-.72.8-1.22.15-.4.32-1 .37-2 .07-1.24.07-1.61.07-4.76s0-3.52-.07-4.76c-.05-1-.22-1.6-.37-2a3.4 3.4 0 00-.8-1.22 3.4 3.4 0 00-1.22-.8c-.4-.15-1-.32-2-.37C15.52 4 15.15 4 12 4z"></path><path d="M12 7.4a4.6 4.6 0 100 9.2 4.6 4.6 0 000-9.2zm0 7.6a3 3 0 110-6 3 3 0 010 6z"></path><circle cx="16.9" cy="7.1" r="1.1"></circle></svg>
+            </a>
+            <a href="https://wa.me/5563985104574" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-badge" title="WhatsApp">
+                <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.27-.1-.46-.15-.66.15-.2.3-.75.95-.92 1.15-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.46.13-.6.13-.14.3-.34.44-.5.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.66-1.6-.9-2.2-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.52.07-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.1 4.5.72.3 1.28.5 1.72.65.72.23 1.38.2 1.9.12.58-.09 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.2-.56-.34z"></path><path d="M12 2.2A9.8 9.8 0 002.6 15.5L2 22l6.7-.6A9.8 9.8 0 1012 2.2zm0 17.9c-1.6 0-3.15-.44-4.5-1.27l-.32-.2-3.32.3.32-3.24-.2-.33A8.1 8.1 0 1112 20.1z"></path></svg>
+            </a>
+            <a href="https://www.youtube.com/@oncamaromba5472" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-badge" title="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M22 12s0-3.1-.4-4.6a2.9 2.9 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.4a2.9 2.9 0 00-2 2C2 8.9 2 12 2 12s0 3.1.4 4.6a2.9 2.9 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.4a2.9 2.9 0 002-2c.4-1.5.4-4.6.4-4.6z"></path><path d="M10 9.4v5.2l4.6-2.6L10 9.4z" fill="#050505"></path></svg>
+            </a>
+            <a href="https://www.facebook.com/people/On%C3%A7a-maromba/100063709129096/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-badge" title="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.45 2.9h-2.35v7A10 10 0 0022 12z"></path></svg>
+            </a>
         </div>
         <div>© <span id="year"></span> Tarick Victor. Todos os direitos reservados.</div>
     </footer>
