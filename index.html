@@ -63,9 +63,13 @@
     position:sticky;top:0;z-index:60;background:rgba(13,13,13,0.86);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:var(--maxw);margin:0 auto;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:var(--maxw);margin:0 auto;}
   .brand{display:flex;align-items:center;gap:12px;}
-  .brand-mark{width:34px;height:34px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--gold);font-size:14px;}
+  /* Logo do cabeçalho: caixa fixa 44x44 para não "esticar" a imagem e não
+     empurrar o layout, independente do tamanho real do arquivo enviado. */
+  .brand-logo{
+    width:44px;height:44px;object-fit:contain;flex-shrink:0;
+  }
   .brand-name{font-family:var(--serif);letter-spacing:.08em;font-size:15px;text-transform:uppercase;}
   .brand-name span{color:var(--gold);}
   nav.links{display:flex;gap:34px;}
@@ -181,6 +185,11 @@
     aspect-ratio:4/5;background:var(--card);border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
   }
+  /* Foto real de perfil: preenche a moldura de 4:5 mantendo o enquadramento
+     (sem distorcer). Troque o arquivo "foto-tarick.jpg" no HTML abaixo. */
+  .about-photo img{
+    width:100%;height:100%;object-fit:cover;object-position:center top;
+  }
   .about-photo svg{width:56%;color:var(--line);}
   .about-photo .frame-label{
     position:absolute;bottom:0;left:0;right:0;padding:14px 18px;
@@ -270,7 +279,14 @@
 <header class="site">
   <div class="nav">
     <a href="#/" class="brand">
-      <img src="onca-mascote.png" style="width: 80px; height: 80px;">
+      <!--
+        LOGO DO CABEÇALHO
+        Troque "onca-mascote.png" pelo arquivo da sua logo/mascote.
+        A classe .brand-logo já fixa o tamanho em 44x44px e evita
+        distorção (object-fit:contain), então qualquer imagem que você
+        subir vai caber certinho aqui sem precisar mexer no CSS.
+      -->
+      <img class="brand-logo" src="onca-mascote.png" alt="Logo Tarick Victor">
       <span class="brand-name">Tarick <span>Victor</span></span>
     </a>
     <nav class="links">
@@ -289,14 +305,16 @@
 <footer>
   <div class="wrap footer-inner">
     <span class="muted">© 2026 TARICK VICTOR — NUTRIÇÃO ESTRATÉGICA</span>
+    <!-- PREENCHER: número do registro profissional (CRN) real -->
     <span class="muted">CRN — CONSULTE REGISTRO PROFISSIONAL</span>
   </div>
 </footer>
 
 <script>
 /* ============ CONFIG ============ */
-const WHATSAPP_NUMBER = "5563985104574"; // TODO: substituir pelo número real do Tarick
-function waLink(msg){ return `https://wa.me/${5563985104574}?text=${encodeURIComponent(msg)}`; }
+/* PREENCHER: número de WhatsApp real do Tarick, formato 55DDDNÚMERO (sem espaços/traços) */
+const WHATSAPP_NUMBER = "5563985104574";
+function waLink(msg){ return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`; }
 
 /* ============ ICONS ============ */
 const ICON = {
@@ -350,6 +368,15 @@ const TIERS = [
     external:true
   }
 ];
+
+/*
+  ATENÇÃO — VALORES DIVERGENTES ENTRE SEÇÕES
+  Os preços do card "Consultoria" (R$ 300) e "Nutrição + App" (R$ 400) em TIERS
+  acima não batem com os preços da mesma consultoria/plano dentro do objeto
+  PAYMENTS mais abaixo (R$ 250 e R$ 300). Confira e alinhe os valores reais
+  antes de publicar, para o cliente não ver um preço na vitrine e outro na
+  hora de pagar.
+*/
 
 const COMPARE_ROWS = [
   ["Consulta inicial","yes","yes","yes"],
@@ -504,10 +531,18 @@ function renderHome(){
 
   <section id="sobre">
     <div class="wrap about-grid">
-      <div>
-        <img src="Guia Definitivo.png" alt="Descrição da imagem" width="250" height="250">
-          <div class="frame-label">Tarick Victor — Nutricionista</div>
-        </div>
+      <!--
+        FOTO DE PERFIL (SEÇÃO SOBRE)
+        Troque "foto-tarick.jpg" pela sua foto real. A moldura .about-photo
+        já está no tamanho e proporção corretos (4:5, com borda dourada e
+        legenda por cima) — a foto se encaixa automaticamente com
+        object-fit:cover, sem esticar. Se a foto cortar a cabeça, ajuste
+        "object-position" no CSS (.about-photo img) de "center top" para
+        "center center", por exemplo.
+      -->
+      <div class="about-photo fade-in">
+        <img src="foto-tarick.jpg" alt="Foto de Tarick Victor, nutricionista">
+        <div class="frame-label">Tarick Victor — Nutricionista</div>
       </div>
       <div class="fade-in">
         <div class="eyebrow">Sobre</div>
@@ -589,6 +624,18 @@ function renderPlanos(){
   observeFadeIns();
 }
 
+/*
+  PÁGINA DE PAGAMENTO
+  O roteador (função route(), no fim do arquivo) já reconhece URLs do tipo
+  "#/pagamento-consultoria", "#/pagamento-nutri-app" etc. e chama
+  renderPayment(slug) — mas essa função ainda não existe neste arquivo.
+  Sem ela, clicar em "Comprar agora"/"Assinar agora" mostra uma tela em
+  branco. Adicione aqui uma função renderPayment(slug) que leia os dados
+  de PAYMENTS[slug] e monte o formulário de pagamento (usando as classes
+  .pay-grid, .pay-form, .field, .summary já prontas no CSS acima), ou
+  troque os links dos botões para abrir direto o WhatsApp/checkout que
+  você for usar.
+*/
 
 /* ============ FADE-IN OBSERVER ============ */
 function observeFadeIns(){
@@ -605,7 +652,11 @@ function route(){
   const hash = window.location.hash || "#/";
   if(hash.startsWith("#/pagamento-")){
     const slug = hash.replace("#/pagamento-","");
-    renderPayment(slug);
+    if(typeof renderPayment === "function"){
+      renderPayment(slug);
+    } else {
+      document.getElementById("app").innerHTML = `<div class="wrap" style="padding:80px 0;"><p class="muted">Página de pagamento ainda não implementada para: ${slug}</p></div>`;
+    }
     window.scrollTo(0,0);
     return;
   }
